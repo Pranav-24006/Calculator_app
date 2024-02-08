@@ -85,7 +85,7 @@ public class Calc {
 		frame.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
-		textField.setFont(new Font("Cambria", Font.BOLD, 31));
+		textField.setFont(new Font("Calibri", Font.BOLD, 31));
 		textField.setBounds(10, 11, 665, 80);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);

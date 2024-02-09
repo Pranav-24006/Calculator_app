@@ -15,7 +15,7 @@ import java.awt.SystemColor;
 public class Calc {
 	double inti=-999999999;
 	double intii=-999999999;
-	double total;
+	Double total=0.0;
 	
 	String action;
 	String ans;
@@ -51,6 +51,8 @@ public class Calc {
 	private JButton btnDot;
 	private JButton btnEql;
 	private JButton btnDiv;
+	private JButton btnMadd;
+	private JButton btnM;
 
 	/**
 	 * Launch the application.
@@ -80,7 +82,8 @@ public class Calc {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 701, 506);
+		frame.getContentPane().setBackground(Color.DARK_GRAY);
+		frame.setBounds(100, 100, 698, 506);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -96,6 +99,7 @@ public class Calc {
 		btnSin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double s = Math.sin(Double.parseDouble(textField.getText()));
+				total = s;
 				textField.setText(((Double)(s)).toString());
 			}
 		});
@@ -142,6 +146,7 @@ public class Calc {
 		btnCos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double s = Math.cos(Double.parseDouble(textField.getText()));
+				total=s;
 				textField.setText(((Double)(s)).toString());
 			}
 		});
@@ -188,6 +193,7 @@ public class Calc {
 		btnTan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double s = Math.tan(Double.parseDouble(textField.getText()));
+				total=s;
 				textField.setText(((Double)(s)).toString());
 			}
 		});
@@ -242,7 +248,7 @@ public class Calc {
 			}
 		});
 		btnB.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnB.setBounds(339, 102, 100, 55);
+		btnB.setBounds(450, 379, 100, 55);
 		frame.getContentPane().add(btnB);
 		
 		btnSquare = new JButton("x^2");
@@ -252,6 +258,7 @@ public class Calc {
 			public void actionPerformed(ActionEvent e) {
 				double a = Double.parseDouble(textField.getText());
 				Double ans = a*a;
+				total  = ans;
 				textField.setText(ans.toString());
 			}
 		});
@@ -266,6 +273,7 @@ public class Calc {
 			public void actionPerformed(ActionEvent e) {
 				double a = Double.parseDouble(textField.getText());
 				Double ans = a*a*a;
+				total = ans;
 				textField.setText(ans.toString());
 			}
 		});
@@ -280,6 +288,7 @@ public class Calc {
 			public void actionPerformed(ActionEvent e) {
 				double a = Double.parseDouble(textField.getText());
 				Double ans = Math.sqrt(a);
+				total = ans;
 				textField.setText(ans.toString());
 			}
 		});
@@ -293,6 +302,7 @@ public class Calc {
 		btnExp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double s = Math.pow(Math.E,Double.parseDouble(textField.getText()));
+				total = s;
 				textField.setText(((Double)(s)).toString());
 			}
 		});
@@ -306,6 +316,7 @@ public class Calc {
 		btnLn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double s = Math.log(Double.parseDouble(textField.getText()));
+				total = s;
 				textField.setText(((Double)(s)).toString());
 			}
 		});
@@ -334,11 +345,11 @@ public class Calc {
 			}
 		});
 		btnCE.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnCE.setBounds(449, 102, 226, 55);
+		btnCE.setBounds(560, 102, 115, 55);
 		frame.getContentPane().add(btnCE);
 		
 		btnAdd = new JButton("+");
-		btnAdd.setBackground(SystemColor.activeCaptionBorder);
+		btnAdd.setBackground(new Color(255, 51, 51));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(inti!=-999999999) {
@@ -359,7 +370,7 @@ public class Calc {
 		frame.getContentPane().add(btnAdd);
 		
 		btnSub = new JButton("-");
-		btnSub.setBackground(SystemColor.activeCaptionBorder);
+		btnSub.setBackground(new Color(255, 51, 51));
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(inti!=-999999999) {
@@ -380,7 +391,7 @@ public class Calc {
 		frame.getContentPane().add(btnSub);
 		
 		btnMul = new JButton("x");
-		btnMul.setBackground(SystemColor.activeCaptionBorder);
+		btnMul.setBackground(new Color(255, 51, 51));
 		btnMul.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -392,11 +403,9 @@ public class Calc {
 					intii = -999999999;
 					action=null;
 				}
-				else {
 				inti = Double.parseDouble(textField.getText());
-				action="*";
-				}
 				textField.setText(null);
+				action="*";
 			}
 		});
 		btnMul.setFont(new Font("Calibri", Font.BOLD, 24));
@@ -411,7 +420,7 @@ public class Calc {
 			}
 		});
 		btn0.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn0.setBounds(10, 379, 209, 55);
+		btn0.setBounds(10, 379, 100, 55);
 		frame.getContentPane().add(btn0);
 		
 		btnDot = new JButton(".");
@@ -422,7 +431,7 @@ public class Calc {
 			}
 		});
 		btnDot.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnDot.setBounds(229, 379, 100, 55);
+		btnDot.setBounds(119, 379, 100, 55);
 		frame.getContentPane().add(btnDot);
 		
 		btnEql = new JButton("=");
@@ -432,24 +441,28 @@ public class Calc {
 				intii = Double.parseDouble(textField.getText());
 				if(action.equals("+")) {
 					Double ans = inti+intii;
+					total = ans;
 					textField.setText(ans.toString());
 				}
 				else if(action.equals("-")) {
 					Double ans = inti-intii;
-					inti =ans;
+					total =ans;
 					textField.setText(ans.toString());
 				}
 				else if(action.equals("*")) {
 					Double ans = inti*intii;
+					total=ans;
 					textField.setText(ans.toString());
 				}
 				else if(action.equals("/")) {
 					Double ans = inti/intii;
+					total = ans;
 					textField.setText(ans.toString());
 				}
 				else if(action.equals("^")){
 					intii = Double.parseDouble(textField.getText());
 					Double ans = Math.pow(inti, intii);
+					total = ans;
 					textField.setText(ans.toString());
 				}
 				inti=-999999999;
@@ -457,11 +470,11 @@ public class Calc {
 			}
 		});
 		btnEql.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnEql.setBounds(339, 379, 209, 55);
+		btnEql.setBounds(339, 379, 101, 55);
 		frame.getContentPane().add(btnEql);
 		
 		btnDiv = new JButton("÷");
-		btnDiv.setBackground(SystemColor.activeCaptionBorder);
+		btnDiv.setBackground(new Color(255, 51, 51));
 		btnDiv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(inti!=-999999999) {
@@ -482,6 +495,8 @@ public class Calc {
 		frame.getContentPane().add(btnDiv);
 		
 		JRadioButton btnWant = new JRadioButton("Want");
+		btnWant.setForeground(Color.WHITE);
+		btnWant.setBackground(Color.DARK_GRAY);
 		btnWant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnSin.setEnabled(true);
@@ -500,6 +515,8 @@ public class Calc {
 		frame.getContentPane().add(btnWant);
 		
 		JRadioButton btnClose = new JRadioButton("Close");
+		btnClose.setForeground(Color.WHITE);
+		btnClose.setBackground(Color.DARK_GRAY);
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnSin.setEnabled(false);
@@ -516,5 +533,35 @@ public class Calc {
 		btnClose.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnClose.setBounds(566, 437, 109, 23);
 		frame.getContentPane().add(btnClose);
+		
+		JButton Ans = new JButton("Ans");
+		Ans.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText(total.toString());
+			}
+		});
+		Ans.setFont(new Font("Calibri", Font.BOLD, 24));
+		Ans.setBounds(229, 379, 100, 55);
+		frame.getContentPane().add(Ans);
+		
+		btnMadd = new JButton("M+");
+		btnMadd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				total = total+Double.parseDouble(textField.getText());
+			}
+		});
+		btnMadd.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnMadd.setBounds(339, 102, 100, 55);
+		frame.getContentPane().add(btnMadd);
+		
+		btnM = new JButton("M-");
+		btnM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				total = total-Double.parseDouble(textField.getText());
+			}
+		});
+		btnM.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnM.setBounds(450, 102, 100, 55);
+		frame.getContentPane().add(btnM);
 	}
 }

@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import java.awt.Color;
 import java.awt.SystemColor;
+import javax.swing.SwingConstants;
+import javax.swing.JList;
 
 public class Calc {
 	double inti=-999999999;
@@ -53,6 +55,12 @@ public class Calc {
 	private JButton btnDiv;
 	private JButton btnMadd;
 	private JButton btnM;
+	private JButton btnPi;
+	private JButton btnE;
+	private JButton btnAC;
+	private JButton btnSinh;
+	private JButton btnCosh;
+	private JButton btnTanh;
 
 	/**
 	 * Launch the application.
@@ -83,13 +91,13 @@ public class Calc {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
-		frame.setBounds(100, 100, 698, 506);
+		frame.setBounds(100, 100, 697, 571);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Calibri", Font.BOLD, 31));
-		textField.setBounds(10, 11, 665, 80);
+		textField.setBounds(10, 11, 665, 93);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
@@ -104,7 +112,7 @@ public class Calc {
 			}
 		});
 		btnSin.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnSin.setBounds(10, 102, 100, 55);
+		btnSin.setBounds(10, 181, 100, 55);
 		frame.getContentPane().add(btnSin);
 		
 		btn7 = new JButton("7");
@@ -115,7 +123,7 @@ public class Calc {
 			}
 		});
 		btn7.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn7.setBounds(10, 176, 100, 55);
+		btn7.setBounds(120, 247, 100, 55);
 		frame.getContentPane().add(btn7);
 		
 		btn4 = new JButton("4");
@@ -126,7 +134,7 @@ public class Calc {
 			}
 		});
 		btn4.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn4.setBounds(10, 242, 100, 55);
+		btn4.setBounds(120, 313, 100, 55);
 		frame.getContentPane().add(btn4);
 		
 		btn1 = new JButton("1");
@@ -137,7 +145,7 @@ public class Calc {
 			}
 		});
 		btn1.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn1.setBounds(10, 313, 100, 55);
+		btn1.setBounds(120, 379, 100, 55);
 		frame.getContentPane().add(btn1);
 		
 		btnCos = new JButton("cos");
@@ -151,7 +159,7 @@ public class Calc {
 			}
 		});
 		btnCos.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnCos.setBounds(119, 102, 100, 55);
+		btnCos.setBounds(120, 181, 100, 55);
 		frame.getContentPane().add(btnCos);
 		
 		btn8 = new JButton("8");
@@ -162,7 +170,7 @@ public class Calc {
 			}
 		});
 		btn8.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn8.setBounds(120, 176, 100, 55);
+		btn8.setBounds(230, 247, 100, 55);
 		frame.getContentPane().add(btn8);
 		
 		btn5 = new JButton("5");
@@ -173,7 +181,7 @@ public class Calc {
 			}
 		});
 		btn5.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn5.setBounds(120, 242, 100, 55);
+		btn5.setBounds(230, 313, 100, 55);
 		frame.getContentPane().add(btn5);
 		
 		btn2 = new JButton("2");
@@ -184,7 +192,7 @@ public class Calc {
 			}
 		});
 		btn2.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn2.setBounds(120, 313, 100, 55);
+		btn2.setBounds(230, 379, 100, 55);
 		frame.getContentPane().add(btn2);
 		
 		btnTan = new JButton("tan");
@@ -198,7 +206,7 @@ public class Calc {
 			}
 		});
 		btnTan.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnTan.setBounds(229, 102, 100, 55);
+		btnTan.setBounds(230, 181, 100, 55);
 		frame.getContentPane().add(btnTan);
 		
 		btn9 = new JButton("9");
@@ -209,7 +217,7 @@ public class Calc {
 			}
 		});
 		btn9.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn9.setBounds(230, 176, 100, 55);
+		btn9.setBounds(340, 247, 100, 55);
 		frame.getContentPane().add(btn9);
 		
 		btn6 = new JButton("6");
@@ -220,7 +228,7 @@ public class Calc {
 			}
 		});
 		btn6.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn6.setBounds(230, 242, 100, 55);
+		btn6.setBounds(340, 313, 100, 55);
 		frame.getContentPane().add(btn6);
 		
 		btn3 = new JButton("3");
@@ -231,7 +239,7 @@ public class Calc {
 			}
 		});
 		btn3.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn3.setBounds(229, 313, 100, 55);
+		btn3.setBounds(340, 379, 100, 55);
 		frame.getContentPane().add(btn3);
 		
 		btnB = new JButton("|←");
@@ -248,7 +256,7 @@ public class Calc {
 			}
 		});
 		btnB.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnB.setBounds(450, 379, 100, 55);
+		btnB.setBounds(340, 115, 100, 55);
 		frame.getContentPane().add(btnB);
 		
 		btnSquare = new JButton("x^2");
@@ -263,7 +271,7 @@ public class Calc {
 			}
 		});
 		btnSquare.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnSquare.setBounds(340, 176, 100, 55);
+		btnSquare.setBounds(10, 247, 100, 55);
 		frame.getContentPane().add(btnSquare);
 		
 		btnCube = new JButton("x^3");
@@ -278,7 +286,7 @@ public class Calc {
 			}
 		});
 		btnCube.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnCube.setBounds(340, 242, 100, 55);
+		btnCube.setBounds(10, 313, 100, 55);
 		frame.getContentPane().add(btnCube);
 		
 		btnSqrt = new JButton("Sqrt");
@@ -293,7 +301,7 @@ public class Calc {
 			}
 		});
 		btnSqrt.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnSqrt.setBounds(339, 313, 100, 55);
+		btnSqrt.setBounds(10, 379, 100, 55);
 		frame.getContentPane().add(btnSqrt);
 		
 		btnExp = new JButton("e^x");
@@ -307,7 +315,7 @@ public class Calc {
 			}
 		});
 		btnExp.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnExp.setBounds(450, 176, 100, 55);
+		btnExp.setBounds(450, 247, 100, 55);
 		frame.getContentPane().add(btnExp);
 		
 		btnLn = new JButton("ln");
@@ -321,7 +329,7 @@ public class Calc {
 			}
 		});
 		btnLn.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnLn.setBounds(450, 242, 100, 55);
+		btnLn.setBounds(450, 313, 100, 55);
 		frame.getContentPane().add(btnLn);
 		
 		btnPow = new JButton("x^n");
@@ -335,17 +343,18 @@ public class Calc {
 			}
 		});
 		btnPow.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnPow.setBounds(449, 313, 100, 55);
+		btnPow.setBounds(450, 379, 100, 55);
 		frame.getContentPane().add(btnPow);
 		
 		btnCE = new JButton("CE");
+		btnCE.setBackground(new Color(255, 51, 51));
 		btnCE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(null);
 			}
 		});
 		btnCE.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnCE.setBounds(560, 102, 115, 55);
+		btnCE.setBounds(450, 115, 100, 55);
 		frame.getContentPane().add(btnCE);
 		
 		btnAdd = new JButton("+");
@@ -366,7 +375,7 @@ public class Calc {
 			}
 		});
 		btnAdd.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnAdd.setBounds(560, 176, 115, 55);
+		btnAdd.setBounds(560, 313, 115, 55);
 		frame.getContentPane().add(btnAdd);
 		
 		btnSub = new JButton("-");
@@ -387,7 +396,7 @@ public class Calc {
 			}
 		});
 		btnSub.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnSub.setBounds(560, 242, 115, 55);
+		btnSub.setBounds(560, 379, 115, 55);
 		frame.getContentPane().add(btnSub);
 		
 		btnMul = new JButton("x");
@@ -409,7 +418,7 @@ public class Calc {
 			}
 		});
 		btnMul.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnMul.setBounds(561, 313, 114, 55);
+		btnMul.setBounds(561, 247, 114, 55);
 		frame.getContentPane().add(btnMul);
 		
 		btn0 = new JButton("0");
@@ -420,7 +429,7 @@ public class Calc {
 			}
 		});
 		btn0.setFont(new Font("Calibri", Font.BOLD, 24));
-		btn0.setBounds(10, 379, 100, 55);
+		btn0.setBounds(230, 445, 100, 55);
 		frame.getContentPane().add(btn0);
 		
 		btnDot = new JButton(".");
@@ -431,7 +440,7 @@ public class Calc {
 			}
 		});
 		btnDot.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnDot.setBounds(119, 379, 100, 55);
+		btnDot.setBounds(119, 445, 100, 55);
 		frame.getContentPane().add(btnDot);
 		
 		btnEql = new JButton("=");
@@ -455,9 +464,14 @@ public class Calc {
 					textField.setText(ans.toString());
 				}
 				else if(action.equals("/")) {
+					if(intii!=0) {
 					Double ans = inti/intii;
 					total = ans;
 					textField.setText(ans.toString());
+					}
+					else {
+						textField.setText("Not defined");
+					}
 				}
 				else if(action.equals("^")){
 					intii = Double.parseDouble(textField.getText());
@@ -470,7 +484,7 @@ public class Calc {
 			}
 		});
 		btnEql.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnEql.setBounds(339, 379, 101, 55);
+		btnEql.setBounds(560, 445, 115, 55);
 		frame.getContentPane().add(btnEql);
 		
 		btnDiv = new JButton("÷");
@@ -491,7 +505,7 @@ public class Calc {
 			}
 		});
 		btnDiv.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnDiv.setBounds(561, 379, 114, 55);
+		btnDiv.setBounds(560, 181, 114, 55);
 		frame.getContentPane().add(btnDiv);
 		
 		JRadioButton btnWant = new JRadioButton("Want");
@@ -508,10 +522,13 @@ public class Calc {
 				btnPow.setEnabled(true);
 				btnSquare.setEnabled(true);
 				btnCube.setEnabled(true);
+				btnSinh.setEnabled(true);
+				btnCosh.setEnabled(true);
+				btnTanh.setEnabled(true);
 			}
 		});
 		btnWant.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnWant.setBounds(20, 437, 109, 23);
+		btnWant.setBounds(10, 502, 109, 23);
 		frame.getContentPane().add(btnWant);
 		
 		JRadioButton btnClose = new JRadioButton("Close");
@@ -528,10 +545,13 @@ public class Calc {
 				btnPow.setEnabled(false);
 				btnSquare.setEnabled(false);
 				btnCube.setEnabled(false);
+				btnSinh.setEnabled(false);
+				btnCosh.setEnabled(false);
+				btnTanh.setEnabled(false);
 			}
 		});
 		btnClose.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnClose.setBounds(566, 437, 109, 23);
+		btnClose.setBounds(566, 502, 109, 23);
 		frame.getContentPane().add(btnClose);
 		
 		JButton Ans = new JButton("Ans");
@@ -541,27 +561,114 @@ public class Calc {
 			}
 		});
 		Ans.setFont(new Font("Calibri", Font.BOLD, 24));
-		Ans.setBounds(229, 379, 100, 55);
+		Ans.setBounds(340, 445, 100, 55);
 		frame.getContentPane().add(Ans);
 		
 		btnMadd = new JButton("M+");
+		btnMadd.setForeground(Color.WHITE);
+		btnMadd.setBackground(Color.DARK_GRAY);
 		btnMadd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				total = total+Double.parseDouble(textField.getText());
 			}
 		});
 		btnMadd.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnMadd.setBounds(339, 102, 100, 55);
+		btnMadd.setBounds(340, 181, 100, 55);
 		frame.getContentPane().add(btnMadd);
 		
 		btnM = new JButton("M-");
+		btnM.setForeground(Color.WHITE);
+		btnM.setBackground(Color.DARK_GRAY);
 		btnM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				total = total-Double.parseDouble(textField.getText());
 			}
 		});
 		btnM.setFont(new Font("Calibri", Font.BOLD, 24));
-		btnM.setBounds(450, 102, 100, 55);
+		btnM.setBounds(450, 181, 100, 55);
 		frame.getContentPane().add(btnM);
+		
+		btnPi = new JButton("π");
+		btnPi.setForeground(Color.WHITE);
+		btnPi.setBackground(Color.DARK_GRAY);
+		btnPi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double x=Math.PI;
+				textField.setText(x.toString());
+			}
+		});
+		btnPi.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnPi.setBounds(10, 445, 100, 55);
+		frame.getContentPane().add(btnPi);
+		
+		btnE = new JButton("e");
+		btnE.setBackground(Color.DARK_GRAY);
+		btnE.setForeground(Color.WHITE);
+		btnE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double x=Math.E;
+				textField.setText(x.toString());
+			}
+		});
+		btnE.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnE.setBounds(450, 445, 100, 55);
+		frame.getContentPane().add(btnE);
+		
+		btnAC = new JButton("AC");
+		btnAC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText(null);
+				total=0.0;
+			}
+		});
+		btnAC.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnAC.setBackground(new Color(255, 51, 51));
+		btnAC.setBounds(560, 115, 114, 55);
+		frame.getContentPane().add(btnAC);
+		
+		btnSinh = new JButton("sinh");
+		btnSinh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double x=Double.parseDouble(textField.getText());
+				Double s = (Math.pow(Math.E, x)-Math.pow(Math.E, -x))/2;
+				total=s;
+				textField.setText(s.toString());
+			}
+		});
+		btnSinh.setForeground(Color.WHITE);
+		btnSinh.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnSinh.setBackground(Color.DARK_GRAY);
+		btnSinh.setBounds(10, 115, 100, 55);
+		frame.getContentPane().add(btnSinh);
+		
+		btnCosh = new JButton("cosh");
+		btnCosh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double x=Double.parseDouble(textField.getText());
+				Double s = (Math.pow(Math.E, x)+Math.pow(Math.E, -x))/2;
+				total = s;
+				textField.setText(s.toString());
+			}
+		});
+		btnCosh.setForeground(Color.WHITE);
+		btnCosh.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnCosh.setBackground(Color.DARK_GRAY);
+		btnCosh.setBounds(120, 115, 100, 55);
+		frame.getContentPane().add(btnCosh);
+		
+		btnTanh = new JButton("tanh");
+		btnTanh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Double x=Double.parseDouble(textField.getText());
+				Double s = (Math.pow(Math.E, x)-Math.pow(Math.E, -x))/(Math.pow(Math.E, x)+Math.pow(Math.E, -x));
+				total = s;
+				textField.setText(s.toString());
+			}
+		});
+		btnTanh.setForeground(Color.WHITE);
+		btnTanh.setFont(new Font("Calibri", Font.BOLD, 24));
+		btnTanh.setBackground(Color.DARK_GRAY);
+		btnTanh.setBounds(230, 115, 100, 55);
+		frame.getContentPane().add(btnTanh);
 	}
 }
